@@ -1,6 +1,9 @@
-﻿namespace TietoCalorieApp.Repositories
+﻿using TietoCalorieApp.Models;
+
+namespace TietoCalorieApp.Repositories
 {
-    public interface ICaloriesRepository
+    public interface ICaloriesRepository<T> where T : class
     {
+        Task<List<Nutrients>> GetAllNutrientsAsync();
     }
 }

@@ -1,13 +1,22 @@
 using Microsoft.EntityFrameworkCore;
 using TietoCalorieApp.Data;
+using TietoCalorieApp.Models;
+using TietoCalorieApp.Repositories;
+using TietoCalorieApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<DataContext>(d => d.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add services to the container.
+//Repositories
+builder.Services.AddTransient<ICaloriesRepository<Dish>, CaloriesRepository>();
 
+//Services
+builder.Services.AddTransient<ICaloriesService, CaloriesService>();
+
+//Controller
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
