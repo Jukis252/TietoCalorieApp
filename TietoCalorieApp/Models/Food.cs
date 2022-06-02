@@ -6,7 +6,7 @@ public class Food
     public string Name { get; set; }
     public int CalorieCount { get; set; }
     public int DishId { get; set; }
-    public Dish Dish { get; set; }
+    public ICollection<Dish> Dish { get; set; }
 
     public int NutrientId { get; set; }
     public Nutrients Nutrients { get; set; }

@@ -19,7 +19,7 @@ namespace TietoCalorieApp.Data
         {
             modelBuilder.Entity<Dish>()
                 .HasMany(f => f.Food)
-                .WithMany(f => Dishes)
+                .WithMany(f => f.Dish)
                 .UsingEntity<DishFood>(
                     r => r.HasOne<Food>().WithMany().HasForeignKey(l => l.FoodId),
                     l => l.HasOne<Dish>().WithMany().HasForeignKey(l => l.DishId),
