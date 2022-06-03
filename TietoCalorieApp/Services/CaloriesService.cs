@@ -41,7 +41,7 @@ namespace TietoCalorieApp.Services
                 CarbsCount = addFoodDto.CarbsCount,
                 ProteinCount = addFoodDto.ProteinCount,
                 FatsCount = addFoodDto.FatsCount,
-                CalorieCount = addFoodDto.CarbsCount + addFoodDto.ProteinCount + addFoodDto.FatsCount
+                CalorieCount = addFoodDto.CalorieCount,
 
             };
             await _caloriesRepository.AddFood(dbFood);
