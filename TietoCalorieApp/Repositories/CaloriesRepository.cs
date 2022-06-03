@@ -35,9 +35,14 @@ namespace TietoCalorieApp.Repositories
             await _dataContext.SaveChangesAsync();
         }
 
-        public async Task<Food> GetFoodById(int id)
+        public async Task<Food?> GetFoodById(int id)
         {
             return await _dataContext.Foods.FirstOrDefaultAsync(e => e.Id == id);
+        }
+
+        public async Task UpdateFood()
+        {
+             _dataContext.SaveChanges();
         }
 
     }

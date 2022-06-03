@@ -58,7 +58,7 @@ namespace TietoCalorieApp.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddFood(AddFoodDTO addFoodDto)
+        public async Task<ActionResult> AddFood(GetFoodDTO addFoodDto)
         {
             try
             {
@@ -71,6 +71,19 @@ namespace TietoCalorieApp.Controllers
             }
         }
 
+        [HttpPut]
+        public async Task<ActionResult> UpdateFood(GetFoodDTO newFood)
+        {
+            try
+            {
+                await _caloriesService.UpdateFood(newFood);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Couldn't update food.");
+            }
+        }
         [HttpDelete("id")]
         public async Task<ActionResult> DeleteFoodById(int id)
         {

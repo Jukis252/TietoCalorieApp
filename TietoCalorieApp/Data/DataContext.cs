@@ -18,7 +18,13 @@ namespace TietoCalorieApp.Data
         {
             modelBuilder.Entity<Dish>();
 
-            modelBuilder.Entity<Food>();
+            modelBuilder.Entity<Food>()
+                .Property(f => f.Id).ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Food>()
+                .HasData(
+                    new {Id = 1, })
+
             modelBuilder.Entity<Nutrients>()
                 .HasData(
                     new {Id = 1, Name = "Carbohydrates", CalorieCount = 4},

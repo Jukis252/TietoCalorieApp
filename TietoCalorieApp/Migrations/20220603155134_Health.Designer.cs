@@ -11,8 +11,8 @@ using TietoCalorieApp.Data;
 namespace TietoCalorieApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220603104405_New2")]
-    partial class New2
+    [Migration("20220603155134_Health")]
+    partial class Health
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

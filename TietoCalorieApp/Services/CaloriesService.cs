@@ -32,17 +32,16 @@ namespace TietoCalorieApp.Services
             return allNutrients;
         }
 
-        public async Task AddFood(AddFoodDTO addFoodDto)
+        public async Task AddFood(GetFoodDTO addFoodDto)
         {
             var dbFood = new Food()
             {
                 Name = addFoodDto.Name,
                 Weight = addFoodDto.Weight,
+                CalorieCount = addFoodDto.CalorieCount,
                 CarbsCount = addFoodDto.CarbsCount,
                 ProteinCount = addFoodDto.ProteinCount,
                 FatsCount = addFoodDto.FatsCount,
-                CalorieCount = addFoodDto.CalorieCount,
-
             };
             await _caloriesRepository.AddFood(dbFood);
         }
@@ -89,6 +88,18 @@ namespace TietoCalorieApp.Services
         {
             var foodFromDb = await _caloriesRepository.GetFoodById(id);
             await _caloriesRepository.DeleteFood(foodFromDb);
+        }
+
+        public async Task UpdateFood(GetFoodDTO newFood)
+        {
+            var food = await _caloriesRepository.GetFoodById(newFood.Id);
+            newFood.Name = food.Name;
+            newFood.CalorieCount = food.CalorieCount;
+            newFood.FatsCount = food.FatsCount;
+            newFood.ProteinCount = food.ProteinCount;
+            newFood.CarbsCount = food.CarbsCount;
+            newFood.Weight = food.Weight;
+            await _caloriesRepository.UpdateFood();
         }
 
     }
