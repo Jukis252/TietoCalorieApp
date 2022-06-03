@@ -7,7 +7,8 @@ namespace TietoCalorieApp.Services
     {
         Task<List<GetNutrientsDTO>> GetAllNutrientsAsync();
         Task AddFood(AddFoodDTO addFoodDto);
-
         Task<List<GetFoodDTO>> GetAllFoodAsync();
+        Task<GetFoodDTO> GetFoodById(int id);
+        Task DeleteFood (int id);
     }
 }

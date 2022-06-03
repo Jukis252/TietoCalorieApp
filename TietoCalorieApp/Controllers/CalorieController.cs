@@ -29,6 +29,34 @@ namespace TietoCalorieApp.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<ActionResult<List<GetFoodDTO>>> GetFood()
+        {
+            try
+            {
+                var allFood = await _caloriesService.GetAllFoodAsync();
+                return Ok(allFood);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("id")]
+        public async Task<ActionResult<int>> GetFoodById(int id)
+        {
+            try
+            {
+                var foodById = await _caloriesService.GetFoodById(id);
+                return Ok(foodById);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult> AddFood(AddFoodDTO addFoodDto)
         {
@@ -43,18 +71,11 @@ namespace TietoCalorieApp.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<ActionResult<List<GetFoodDTO>>> GetFood()
+        [HttpDelete("id")]
+        public async Task<ActionResult> DeleteFoodById(int id)
         {
-            try
-            {
-                var allFood = await _caloriesService.GetAllFoodAsync();
-                return Ok(allFood);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            await _caloriesService.DeleteFood(id);
+            return Ok();
         }
     }
 }

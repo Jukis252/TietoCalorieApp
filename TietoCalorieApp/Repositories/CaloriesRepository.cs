@@ -28,5 +28,17 @@ namespace TietoCalorieApp.Repositories
         {
             return await _dataContext.Foods.OrderByDescending(e => e.Id).ToListAsync();
         }
+
+        public async Task DeleteFood(Food food)
+        {
+            _dataContext.Foods.Remove(food);
+            await _dataContext.SaveChangesAsync();
+        }
+
+        public async Task<Food> GetFoodById(int id)
+        {
+            return await _dataContext.Foods.FirstOrDefaultAsync(e => e.Id == id);
+        }
+
     }
 }
