@@ -29,5 +29,18 @@ namespace TietoCalorieApp.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<ActionResult> AddFood(AddFoodDTO addFoodDto)
+        {
+            try
+            {
+                await _caloriesService.AddFood(addFoodDto);
+                return NoContent();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Couldn't add food to menu.");
+            }
+        }
     }
 }

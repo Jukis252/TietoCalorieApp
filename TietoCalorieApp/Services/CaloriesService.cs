@@ -1,4 +1,5 @@
-﻿using TietoCalorieApp.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using TietoCalorieApp.Models;
 using TietoCalorieApp.Models.DTO;
 using TietoCalorieApp.Repositories;
 
@@ -25,10 +26,25 @@ namespace TietoCalorieApp.Services
                     Id = nutrient.Id,
                     Name = nutrient.Name,
                 };
-                allNutrients.Add(nutrientsDTO);
+                allNutrients.Add(nutrientsDTO);  
             }
 
             return allNutrients;
+        }
+
+        public async Task AddFood(AddFoodDTO addFoodDto)
+        {
+            var dbFood = new Food()
+            {
+                Name = addFoodDto.Name,
+                Weight = addFoodDto.Weight,
+                CarbsCount = addFoodDto.CarbsCount,
+                ProteinCount = addFoodDto.ProteinCount,
+                FatsCount = addFoodDto.FatsCount,
+                CalorieCount = addFoodDto.CarbsCount + addFoodDto.ProteinCount + addFoodDto.FatsCount
+
+            };
+            await _caloriesRepository.AddFood(dbFood);
         }
 
     }
