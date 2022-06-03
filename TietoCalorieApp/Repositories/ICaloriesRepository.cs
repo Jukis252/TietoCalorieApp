@@ -7,5 +7,7 @@ namespace TietoCalorieApp.Repositories
     {
         Task<List<Nutrients>> GetAllNutrientsAsync();
         Task AddFood(Food food);
+
+        Task<List<Food>> GetAllFoodAsync();
     }
 }

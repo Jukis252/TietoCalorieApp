@@ -23,5 +23,10 @@ namespace TietoCalorieApp.Repositories
             await _dataContext.Foods.AddAsync(food);
             await _dataContext.SaveChangesAsync();
         }
+
+        public async Task<List<Food>> GetAllFoodAsync()
+        {
+            return await _dataContext.Foods.OrderByDescending(e => e.Id).ToListAsync();
+        }
     }
 }

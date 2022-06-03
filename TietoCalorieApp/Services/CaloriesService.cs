@@ -20,13 +20,13 @@ namespace TietoCalorieApp.Services
             var allNutrients = new List<GetNutrientsDTO>();
             foreach (var nutrient in nutrientsFromDb)
             {
-                var nutrientsDTO = new GetNutrientsDTO()
+                var nutrientsDto = new GetNutrientsDTO()
                 {
                     CalorieCount = nutrient.CalorieCount,
                     Id = nutrient.Id,
                     Name = nutrient.Name,
                 };
-                allNutrients.Add(nutrientsDTO);  
+                allNutrients.Add(nutrientsDto);  
             }
 
             return allNutrients;
@@ -45,6 +45,27 @@ namespace TietoCalorieApp.Services
 
             };
             await _caloriesRepository.AddFood(dbFood);
+        }
+
+        public async Task<List<GetFoodDTO>> GetAllFoodAsync()
+        {
+            var foodFromDb = await _caloriesRepository.GetAllFoodAsync();
+            var allFood = new List<GetFoodDTO>();
+            foreach (var food in foodFromDb)
+            {
+                var foodDto = new GetFoodDTO()
+                {
+                    Name = food.Name,
+                    CalorieCount = food.CalorieCount,
+                    FatsCount = food.FatsCount,
+                    ProteinCount = food.ProteinCount,
+                    CarbsCount = food.CarbsCount,
+                    Weight = food.Weight
+                };
+                allFood.Add(foodDto);
+            }
+
+            return allFood;
         }
 
     }

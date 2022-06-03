@@ -15,7 +15,7 @@ namespace TietoCalorieApp.Controllers
             _caloriesService = caloriesService;
         }
 
-        [HttpGet]
+        [HttpGet ("Nutrients/")]
         public async Task<ActionResult<List<GetNutrientsDTO>>> GetAllNutrients()
         {
             try
@@ -40,6 +40,20 @@ namespace TietoCalorieApp.Controllers
             catch (Exception)
             {
                 return StatusCode(500, "Couldn't add food to menu.");
+            }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<GetFoodDTO>>> GetFood()
+        {
+            try
+            {
+                var allFood = await _caloriesService.GetAllFoodAsync();
+                return Ok(allFood);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
             }
         }
     }
