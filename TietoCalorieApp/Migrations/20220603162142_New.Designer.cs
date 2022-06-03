@@ -11,8 +11,8 @@ using TietoCalorieApp.Data;
 namespace TietoCalorieApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220602111024_ManyMany")]
-    partial class ManyMany
+    [Migration("20220603162142_New")]
+    partial class New
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,7 +31,7 @@ namespace TietoCalorieApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("FoodId")
+                    b.Property<int>("CalorieCount")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -41,21 +41,6 @@ namespace TietoCalorieApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Dishes");
-                });
-
-            modelBuilder.Entity("TietoCalorieApp.Models.DishFood", b =>
-                {
-                    b.Property<int>("DishId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FoodId")
-                        .HasColumnType("int");
-
-                    b.HasKey("DishId", "FoodId");
-
-                    b.HasIndex("FoodId");
-
-                    b.ToTable("DishFoods");
                 });
 
             modelBuilder.Entity("TietoCalorieApp.Models.Food", b =>
@@ -69,21 +54,57 @@ namespace TietoCalorieApp.Migrations
                     b.Property<int>("CalorieCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("DishId")
+                    b.Property<int>("CarbsCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FatsCount")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NutrientId")
+                    b.Property<int>("ProteinCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Weight")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NutrientId");
-
                     b.ToTable("Foods");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CalorieCount = 16,
+                            CarbsCount = 9,
+                            FatsCount = 0,
+                            Name = "Tomato",
+                            ProteinCount = 4,
+                            Weight = 100
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CalorieCount = 47,
+                            CarbsCount = 13,
+                            FatsCount = 0,
+                            Name = "Orange",
+                            ProteinCount = 1,
+                            Weight = 100
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CalorieCount = 15,
+                            CarbsCount = 3,
+                            FatsCount = 0,
+                            Name = "Cucumber",
+                            ProteinCount = 4,
+                            Weight = 100
+                        });
                 });
 
             modelBuilder.Entity("TietoCalorieApp.Models.Nutrients", b =>
@@ -124,37 +145,6 @@ namespace TietoCalorieApp.Migrations
                             CalorieCount = 9,
                             Name = "Fats"
                         });
-                });
-
-            modelBuilder.Entity("TietoCalorieApp.Models.DishFood", b =>
-                {
-                    b.HasOne("TietoCalorieApp.Models.Dish", null)
-                        .WithMany()
-                        .HasForeignKey("DishId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TietoCalorieApp.Models.Food", null)
-                        .WithMany()
-                        .HasForeignKey("FoodId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("TietoCalorieApp.Models.Food", b =>
-                {
-                    b.HasOne("TietoCalorieApp.Models.Nutrients", "Nutrients")
-                        .WithMany("Food")
-                        .HasForeignKey("NutrientId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Nutrients");
-                });
-
-            modelBuilder.Entity("TietoCalorieApp.Models.Nutrients", b =>
-                {
-                    b.Navigation("Food");
                 });
 #pragma warning restore 612, 618
         }

@@ -9,10 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DataContext>(d => d.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //Repositories
-builder.Services.AddTransient<ICaloriesRepository<Dish>, CaloriesRepository>();
+builder.Services.AddTransient<IFoodRepository<Food>, FoodRepository>();
 
 //Services
-builder.Services.AddTransient<ICaloriesService, CaloriesService>();
+builder.Services.AddTransient<IFoodService, FoodService>();
 
 //Controller
 builder.Services.AddControllers();
