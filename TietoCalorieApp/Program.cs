@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DataContext>(d => d.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //Repositories
-builder.Services.AddTransient<IFoodRepository<Dish>, FoodRepository>();
+builder.Services.AddTransient<IFoodRepository<Food>, FoodRepository>();
 
 //Services
 builder.Services.AddTransient<IFoodService, FoodService>();

@@ -7,9 +7,9 @@ namespace TietoCalorieApp.Services
 {
     public class FoodService : IFoodService
     {
-        private readonly IFoodRepository<Dish> _foodRepository;
+        private readonly IFoodRepository<Food> _foodRepository;
 
-        public FoodService(IFoodRepository<Dish> foodRepository)
+        public FoodService(IFoodRepository<Food> foodRepository)
         {
             _foodRepository = foodRepository;
         }
@@ -94,12 +94,12 @@ namespace TietoCalorieApp.Services
         public async Task UpdateFood(FoodDTO newFood)
         {
             var food = await _foodRepository.GetFoodById(newFood.Id);
-            newFood.Name = food.Name;
-            newFood.CalorieCount = food.CalorieCount;
-            newFood.FatsCount = food.FatsCount;
-            newFood.ProteinCount = food.ProteinCount;
-            newFood.CarbsCount = food.CarbsCount;
-            newFood.Weight = food.Weight;
+            food.Name = newFood.Name;
+            food.Weight = newFood.Weight;
+            food.FatsCount = newFood.FatsCount;
+            food.ProteinCount = newFood.ProteinCount;
+            food.CarbsCount = newFood.CarbsCount;
+            food.CalorieCount = newFood.CalorieCount;
             await _foodRepository.UpdateFood();
         }
 
