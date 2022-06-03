@@ -23,7 +23,22 @@ namespace TietoCalorieApp.Data
 
             modelBuilder.Entity<Food>()
                 .HasData(
-                    new {Id = 1, })
+                    new
+                    {
+                        Id = 1, Name = "Tomato", Weight = 100, CalorieCount = 16, CarbsCount = 9, ProteinCount = 4,
+                        FatsCount = 0
+                    },
+                    new
+                    {
+                        Id = 2, Name = "Orange", Weight = 100, CalorieCount = 47, CarbsCount = 13, ProteinCount = 1,
+                        FatsCount = 0
+                    },
+                    new
+                    {
+                        Id = 3, Name = "Cucumber", Weight = 100, CalorieCount = 15, CarbsCount = 3, ProteinCount = 4,
+                        FatsCount = 0
+                    }
+                );
 
             modelBuilder.Entity<Nutrients>()
                 .HasData(

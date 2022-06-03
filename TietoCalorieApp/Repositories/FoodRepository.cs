@@ -4,11 +4,11 @@ using TietoCalorieApp.Models;
 
 namespace TietoCalorieApp.Repositories
 {
-    public class CaloriesRepository : ICaloriesRepository<Dish>
+    public class FoodRepository : IFoodRepository<Food>
     {
         private readonly DataContext _dataContext;
 
-        public CaloriesRepository(DataContext dataContext)
+        public FoodRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
         }

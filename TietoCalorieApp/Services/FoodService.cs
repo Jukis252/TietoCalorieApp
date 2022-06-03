@@ -5,18 +5,18 @@ using TietoCalorieApp.Repositories;
 
 namespace TietoCalorieApp.Services
 {
-    public class CaloriesService : ICaloriesService
+    public class FoodService : IFoodService
     {
-        private readonly ICaloriesRepository<Dish> _caloriesRepository;
+        private readonly IFoodRepository<Dish> _foodRepository;
 
-        public CaloriesService(ICaloriesRepository<Dish> caloriesRepository)
+        public FoodService(IFoodRepository<Dish> foodRepository)
         {
-            _caloriesRepository = caloriesRepository;
+            _foodRepository = foodRepository;
         }
 
         public async Task<List<GetNutrientsDTO>> GetAllNutrientsAsync()
         {
-            var nutrientsFromDb = await _caloriesRepository.GetAllNutrientsAsync();
+            var nutrientsFromDb = await _foodRepository.GetAllNutrientsAsync();
             var allNutrients = new List<GetNutrientsDTO>();
             foreach (var nutrient in nutrientsFromDb)
             {
@@ -32,7 +32,7 @@ namespace TietoCalorieApp.Services
             return allNutrients;
         }
 
-        public async Task AddFood(GetFoodDTO addFoodDto)
+        public async Task AddFood(FoodDTO addFoodDto)
         {
             var dbFood = new Food()
             {
@@ -43,17 +43,18 @@ namespace TietoCalorieApp.Services
                 ProteinCount = addFoodDto.ProteinCount,
                 FatsCount = addFoodDto.FatsCount,
             };
-            await _caloriesRepository.AddFood(dbFood);
+            await _foodRepository.AddFood(dbFood);
         }
 
-        public async Task<List<GetFoodDTO>> GetAllFoodAsync()
+        public async Task<List<FoodDTO>> GetAllFoodAsync()
         {
-            var foodFromDb = await _caloriesRepository.GetAllFoodAsync();
-            var allFood = new List<GetFoodDTO>();
+            var foodFromDb = await _foodRepository.GetAllFoodAsync();
+            var allFood = new List<FoodDTO>();
             foreach (var food in foodFromDb)
             {
-                var foodDto = new GetFoodDTO()
+                var foodDto = new FoodDTO()
                 {
+                    Id= food.Id,
                     Name = food.Name,
                     CalorieCount = food.CalorieCount,
                     FatsCount = food.FatsCount,
@@ -67,11 +68,11 @@ namespace TietoCalorieApp.Services
             return allFood;
         }
 
-        public async Task<GetFoodDTO> GetFoodById(int id)
+        public async Task<FoodDTO> GetFoodById(int id)
         {
-            var foodFromDb = await _caloriesRepository.GetFoodById(id);
+            var foodFromDb = await _foodRepository.GetFoodById(id);
 
-            var singleFood = new GetFoodDTO()
+            var singleFood = new FoodDTO()
             {
                 Id = foodFromDb.Id,
                 Name = foodFromDb.Name,
@@ -86,20 +87,20 @@ namespace TietoCalorieApp.Services
 
         public async Task DeleteFood(int id)
         {
-            var foodFromDb = await _caloriesRepository.GetFoodById(id);
-            await _caloriesRepository.DeleteFood(foodFromDb);
+            var foodFromDb = await _foodRepository.GetFoodById(id);
+            await _foodRepository.DeleteFood(foodFromDb);
         }
 
-        public async Task UpdateFood(GetFoodDTO newFood)
+        public async Task UpdateFood(FoodDTO newFood)
         {
-            var food = await _caloriesRepository.GetFoodById(newFood.Id);
+            var food = await _foodRepository.GetFoodById(newFood.Id);
             newFood.Name = food.Name;
             newFood.CalorieCount = food.CalorieCount;
             newFood.FatsCount = food.FatsCount;
             newFood.ProteinCount = food.ProteinCount;
             newFood.CarbsCount = food.CarbsCount;
             newFood.Weight = food.Weight;
-            await _caloriesRepository.UpdateFood();
+            await _foodRepository.UpdateFood();
         }
 
     }

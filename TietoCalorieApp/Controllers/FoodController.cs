@@ -6,13 +6,13 @@ namespace TietoCalorieApp.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CalorieController : ControllerBase
+    public class FoodController : ControllerBase
     {
-        private readonly ICaloriesService _caloriesService;
+        private readonly IFoodService _foodService;
 
-        public CalorieController(ICaloriesService caloriesService)
+        public FoodController(IFoodService foodService)
         {
-            _caloriesService = caloriesService;
+            _foodService = foodService;
         }
 
         [HttpGet ("Nutrients/")]
@@ -20,7 +20,7 @@ namespace TietoCalorieApp.Controllers
         {
             try
             {
-                var allNutrients = await _caloriesService.GetAllNutrientsAsync();
+                var allNutrients = await _foodService.GetAllNutrientsAsync();
                 return Ok(allNutrients);
             }
             catch (Exception e)
@@ -30,11 +30,11 @@ namespace TietoCalorieApp.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<GetFoodDTO>>> GetFood()
+        public async Task<ActionResult<List<FoodDTO>>> GetFood()
         {
             try
             {
-                var allFood = await _caloriesService.GetAllFoodAsync();
+                var allFood = await _foodService.GetAllFoodAsync();
                 return Ok(allFood);
             }
             catch (Exception e)
@@ -48,7 +48,7 @@ namespace TietoCalorieApp.Controllers
         {
             try
             {
-                var foodById = await _caloriesService.GetFoodById(id);
+                var foodById = await _foodService.GetFoodById(id);
                 return Ok(foodById);
             }
             catch (Exception e)
@@ -58,11 +58,11 @@ namespace TietoCalorieApp.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddFood(GetFoodDTO addFoodDto)
+        public async Task<ActionResult> AddFood(FoodDTO addFoodDto)
         {
             try
             {
-                await _caloriesService.AddFood(addFoodDto);
+                await _foodService.AddFood(addFoodDto);
                 return NoContent();
             }
             catch (Exception)
@@ -72,11 +72,11 @@ namespace TietoCalorieApp.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> UpdateFood(GetFoodDTO newFood)
+        public async Task<ActionResult> UpdateFood(FoodDTO newFood)
         {
             try
             {
-                await _caloriesService.UpdateFood(newFood);
+                await _foodService.UpdateFood(newFood);
                 return Ok();
             }
             catch (Exception e)
@@ -87,7 +87,7 @@ namespace TietoCalorieApp.Controllers
         [HttpDelete("id")]
         public async Task<ActionResult> DeleteFoodById(int id)
         {
-            await _caloriesService.DeleteFood(id);
+            await _foodService.DeleteFood(id);
             return Ok();
         }
     }

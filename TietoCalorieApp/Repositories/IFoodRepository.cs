@@ -3,7 +3,7 @@ using TietoCalorieApp.Models;
 
 namespace TietoCalorieApp.Repositories
 {
-    public interface ICaloriesRepository<T> where T : class
+    public interface IFoodRepository<T> where T : class
     {
         Task<List<Nutrients>> GetAllNutrientsAsync();
         Task AddFood(Food food);

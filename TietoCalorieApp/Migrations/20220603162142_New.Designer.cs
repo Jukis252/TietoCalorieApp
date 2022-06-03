@@ -11,8 +11,8 @@ using TietoCalorieApp.Data;
 namespace TietoCalorieApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220603155134_Health")]
-    partial class Health
+    [Migration("20220603162142_New")]
+    partial class New
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,25 +54,57 @@ namespace TietoCalorieApp.Migrations
                     b.Property<int>("CalorieCount")
                         .HasColumnType("int");
 
-                    b.Property<double>("CarbsCount")
-                        .HasColumnType("float");
+                    b.Property<int>("CarbsCount")
+                        .HasColumnType("int");
 
-                    b.Property<double>("FatsCount")
-                        .HasColumnType("float");
+                    b.Property<int>("FatsCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("ProteinCount")
-                        .HasColumnType("float");
+                    b.Property<int>("ProteinCount")
+                        .HasColumnType("int");
 
-                    b.Property<double>("Weight")
-                        .HasColumnType("float");
+                    b.Property<int>("Weight")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.ToTable("Foods");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CalorieCount = 16,
+                            CarbsCount = 9,
+                            FatsCount = 0,
+                            Name = "Tomato",
+                            ProteinCount = 4,
+                            Weight = 100
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CalorieCount = 47,
+                            CarbsCount = 13,
+                            FatsCount = 0,
+                            Name = "Orange",
+                            ProteinCount = 1,
+                            Weight = 100
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CalorieCount = 15,
+                            CarbsCount = 3,
+                            FatsCount = 0,
+                            Name = "Cucumber",
+                            ProteinCount = 4,
+                            Weight = 100
+                        });
                 });
 
             modelBuilder.Entity("TietoCalorieApp.Models.Nutrients", b =>
