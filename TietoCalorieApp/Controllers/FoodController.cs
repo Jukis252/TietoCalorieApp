@@ -57,6 +57,20 @@ namespace TietoCalorieApp.Controllers
             }
         }
 
+        [HttpGet("name")]
+        public async Task<ActionResult<int>> GetFoodByName(string name)
+        {
+            try
+            {
+                var foodById = await _foodService.GetFoodByName(name);
+                return Ok(foodById);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult> AddFood(FoodDTO addFoodDto)
         {

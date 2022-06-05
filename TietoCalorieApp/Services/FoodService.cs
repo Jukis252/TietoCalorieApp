@@ -68,6 +68,23 @@ namespace TietoCalorieApp.Services
             return allFood;
         }
 
+        public async Task<FoodDTO> GetFoodByName(string name)
+        {
+            var foodFromDb = await _foodRepository.GetFoodByName(name);
+
+            var singleFood = new FoodDTO()
+            {
+                Id = foodFromDb.Id,
+                Name = foodFromDb.Name,
+                CalorieCount = foodFromDb.CalorieCount,
+                FatsCount = foodFromDb.FatsCount,
+                ProteinCount = foodFromDb.ProteinCount,
+                CarbsCount = foodFromDb.CarbsCount,
+                Weight = foodFromDb.Weight,
+            };
+            return singleFood;
+        }
+
         public async Task<FoodDTO> GetFoodById(int id)
         {
             var foodFromDb = await _foodRepository.GetFoodById(id);

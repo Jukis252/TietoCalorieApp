@@ -10,6 +10,7 @@ namespace TietoCalorieApp.Repositories
         Task<List<Food>> GetAllFoodAsync();
         Task DeleteFood (Food food);
         Task<Food?> GetFoodById(int id);
+        Task<Food?> GetFoodByName(string name);
         Task UpdateFood();
     }
 }
