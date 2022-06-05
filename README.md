@@ -1,5 +1,6 @@
 # TietoCalorieApp
 
+!!! WORKS ONLY FROM DEVELOP !!!
 Tools needed:
 1.Visual Studio
 2.Visual Studio Code
