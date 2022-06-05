@@ -10,7 +10,6 @@ function App() {
           <Views />
         </div>
       </div>
-
     </FoodContextProvider>
   );
 }
