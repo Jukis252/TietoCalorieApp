@@ -2,10 +2,13 @@
 import './Views.css';
 import Box from '@mui/material/Box';
 import { Divider } from '@mui/material';
+import { useState } from 'react';
 import Heading2 from './Heading2/Heading2';
 import FindFood from './FindFood/FindFood';
 
 function Views() {
+  const [name, setName] = useState('');
+
   return (
     <div className="page">
       <div className="header">Calorie App</div>
@@ -20,6 +23,8 @@ function Views() {
                 fullWidth
                 label="Food name"
                 placeholder="Enter food name"
+                name={name}
+                setName={setName}
               />
             </Box>
             <Divider />
