@@ -32,9 +32,21 @@ namespace TietoCalorieApp.Migrations
                     b.Property<int>("CalorieCount")
                         .HasColumnType("int");
 
+                    b.Property<int>("CarbsCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FatsCount")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProteinCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Weight")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

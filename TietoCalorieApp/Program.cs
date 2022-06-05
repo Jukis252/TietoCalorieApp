@@ -20,9 +20,11 @@ builder.Services.AddHttpContextAccessor();
 
 //Repositories
 builder.Services.AddTransient<IFoodRepository<Food>, FoodRepository>();
+builder.Services.AddTransient<IDishRepository<Dish>, DishRepository>();
 
 //Services
 builder.Services.AddTransient<IFoodService, FoodService>();
+builder.Services.AddTransient<IDishService, DishService>();
 
 //Controller
 builder.Services.AddControllers();
