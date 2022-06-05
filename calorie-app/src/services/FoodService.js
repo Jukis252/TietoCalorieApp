@@ -14,7 +14,9 @@ class FoodService {
     const options = {
       headers,
       method,
+      credentials: 'include',
     };
     return fetch(this.url, options);
   }
 }
+export default FoodService;
