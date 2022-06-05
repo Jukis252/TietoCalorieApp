@@ -21,7 +21,6 @@ function Views() {
             <Box className="BoxStyles FindFood">
               <Heading2>Find Food</Heading2>
               <FindFood
-                fullWidth
                 label="Food name"
                 placeholder="Enter food name"
                 name={name}
