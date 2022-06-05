@@ -84,10 +84,10 @@ namespace TietoCalorieApp.Controllers
                 return StatusCode(500, "Couldn't update food.");
             }
         }
-        [HttpDelete("id")]
-        public async Task<ActionResult> DeleteFoodById(int id)
+        [HttpDelete("Name")]
+        public async Task<ActionResult> DeleteFoodByName(string name)
         {
-            await _foodService.DeleteFood(id);
+            await _foodService.DeleteFood(name);
             return Ok();
         }
     }
