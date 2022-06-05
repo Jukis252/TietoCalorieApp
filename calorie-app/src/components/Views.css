@@ -1,0 +1,32 @@
+.page
+{
+    width: 100%;
+}
+.header
+{
+    background-color: darkgray;
+    padding: 20px;
+    text-align: center;
+    justify-content: space-between;
+}
+.body
+{
+    display: flex;
+    flex-direction: row;
+}
+.Menu
+{
+    width: 50%;
+    text-align: center;
+    border: 10px;
+    border-color: red;
+}
+.Display
+{
+    width: 50%;
+    text-align: center;
+}
+.MenuBody
+{
+    width: 100%;
+}

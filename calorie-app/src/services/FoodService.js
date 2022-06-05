@@ -3,10 +3,18 @@ const headers = {
   'Content-type': 'application/json',
 };
 
-class FoodService 
-{
-    constructor()
-    {
-        this.url = ""
-    }
+// eslint-disable-next-line no-unused-vars
+class FoodService {
+  constructor() {
+    this.url = 'https://localhost:7049/Food';
+  }
+
+  getAll() {
+    const method = 'GET';
+    const options = {
+      headers,
+      method,
+    };
+    return fetch(this.url, options);
+  }
 }
