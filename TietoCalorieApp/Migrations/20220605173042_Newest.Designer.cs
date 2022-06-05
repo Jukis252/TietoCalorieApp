@@ -11,8 +11,8 @@ using TietoCalorieApp.Data;
 namespace TietoCalorieApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220603162142_New")]
-    partial class New
+    [Migration("20220605173042_Newest")]
+    partial class Newest
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,9 +34,21 @@ namespace TietoCalorieApp.Migrations
                     b.Property<int>("CalorieCount")
                         .HasColumnType("int");
 
+                    b.Property<int>("CarbsCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FatsCount")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProteinCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Weight")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
