@@ -1,5 +1,7 @@
 function FindFood() {
-    return (  );
+  return (
+    'Placeholder'
+  );
 }
 
 export default FindFood;
