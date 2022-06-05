@@ -3,6 +3,7 @@ import './Views.css';
 import Box from '@mui/material/Box';
 import { Divider } from '@mui/material';
 import Heading2 from './Heading2/Heading2';
+import FindFood from './FindFood/FindFood';
 
 function Views() {
   return (
@@ -15,6 +16,11 @@ function Views() {
             <Divider />
             <Box className="BoxStyles FindFood">
               <Heading2>Find Food</Heading2>
+              <FindFood
+                fullWidth
+                label="Food name"
+                placeholder="Enter food name"
+              />
             </Box>
             <Divider />
           </div>
