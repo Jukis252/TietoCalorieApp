@@ -7,9 +7,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import FoodService from '../../services/FoodService';
+import DishService from '../../services/DishService';
 
-const foodService = new FoodService();
+const dishService = new DishService();
 
 // function createData(name, calories, fat, carbs, protein) {
 //   return {
@@ -17,11 +17,11 @@ const foodService = new FoodService();
 //   };
 // }
 
-function DisplayTable() {
-  const [food, setFood] = useState();
+function DisplayDishTable() {
+  const [dish, setDish] = useState();
 
   useEffect(() => {
-    foodService
+    dishService
       .getAll()
       .then((res) => {
         if (!res.ok) {
@@ -30,7 +30,7 @@ function DisplayTable() {
         return res.json();
       })
       .then((dataFromDB) => {
-        setFood(dataFromDB);
+        setDish(dataFromDB);
       });
   }, []);
 
@@ -47,24 +47,22 @@ function DisplayTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {food && food.map((foods) => (
-            <TableRow
-              key={foods.id}
-              value={foods.id}
-            >
-              <TableCell component="th" scope="row">
-                {foods.name}
-              </TableCell>
-              <TableCell align="right">{foods.calorieCount}</TableCell>
-              <TableCell align="right">{foods.fatsCount}</TableCell>
-              <TableCell align="right">{foods.carbsCount}</TableCell>
-              <TableCell align="right">{foods.proteinCount}</TableCell>
-            </TableRow>
-          ))}
+          {dish &&
+            dish.map((dishes) => (
+              <TableRow key={dishes.id} value={dishes.id}>
+                <TableCell component="th" scope="row">
+                  {dishes.name}
+                </TableCell>
+                <TableCell align="right">{dishes.calorieCount}</TableCell>
+                <TableCell align="right">{dishes.fatsCount}</TableCell>
+                <TableCell align="right">{dishes.carbsCount}</TableCell>
+                <TableCell align="right">{dishes.proteinCount}</TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
     </TableContainer>
   );
 }
 
-export default DisplayTable;
+export default DisplayDishTable;

@@ -28,8 +28,25 @@
 }
 .MenuBody
 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     text-align: left;
     padding-left: 10px;
     padding-right: 20px;
     width: 100%;
+}
+.updateFood
+{
+    padding-left: 10px;
+}
+.BoxStyles
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.deleteFood
+{
+    padding-left: 10px;
 }
