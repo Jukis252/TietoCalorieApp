@@ -4,10 +4,10 @@ import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
 // create context
-const UserContext = createContext({});
-function UserContextProvider({ children }) {
+const FoodContext = createContext({});
+function FoodContextProvider({ children }) {
   // the value that will be given to the context
-  const [user, setUser] = useState(UserContext);
+  const [food, setFood] = useState(FoodContext);
   const [getSingleFoodObject, setSingleFoodObject] = useState(null);
   const [getAllFoods, setAllFoods] = useState(null);
   const [fetch, setFetch] = useState(0);
@@ -16,13 +16,11 @@ function UserContextProvider({ children }) {
     const incrementFetch = fetch + 1;
     setFetch(incrementFetch);
   };
-  // SHOULD WE SPLIT CONTEXT TO SEPARATE ONES?
   return (
-    // the Provider gives access to the context to its children
     // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <UserContext.Provider value={{
-      user,
-      setUser,
+    <FoodContext.Provider value={{
+      user: food,
+      setUser: setFood,
       getSingleFoodObject,
       setSingleFoodObject,
       getAllFoods,
@@ -32,13 +30,13 @@ function UserContextProvider({ children }) {
     }}
     >
       {children}
-    </UserContext.Provider>
+    </FoodContext.Provider>
   );
 }
-UserContextProvider.propTypes = {
+FoodContextProvider.propTypes = {
   children: PropTypes.objectOf(
     PropTypes.any,
   ).isRequired,
 };
 
-export { UserContext, UserContextProvider };
+export { FoodContext, FoodContextProvider };
