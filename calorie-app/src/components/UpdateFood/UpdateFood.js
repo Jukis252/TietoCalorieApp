@@ -92,7 +92,7 @@ function UpdateFood() {
           variant="outlined"
           onClick={UpdateFoodAsync}
         >
-          Add
+          Update
         </Button>
       </div>
     </div>

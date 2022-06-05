@@ -41,5 +41,14 @@ class FoodService {
     }
     return fetch(this.url, options);
   }
+
+  deleteFoodByName(name) {
+    const method = 'DELETE';
+    const options = {
+      headers,
+      method,
+    };
+    return fetch(`${this.url}/${name}`, options);
+  }
 }
 export default FoodService;

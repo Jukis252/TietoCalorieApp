@@ -46,3 +46,7 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+.deleteFood
+{
+    padding-left: 10px;
+}

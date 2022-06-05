@@ -7,6 +7,7 @@ import DisplayFoodTable from './DisplayFoodTable/DisplayFoodTable';
 import DisplayDishTable from './DisplayDishesTable/DisplayDishesTable';
 import AddFood from './AddFood/AddFood';
 import UpdateFood from './UpdateFood/UpdateFood';
+import DeleteFood from './DeleteFood/DeleteFood';
 
 function Views() {
   return (
@@ -25,6 +26,10 @@ function Views() {
               <div className="updateFood">
                 <Heading2>Update Food</Heading2>
                 <UpdateFood />
+              </div>
+              <div className="deleteFood">
+                <Heading2>Delete Food</Heading2>
+                <DeleteFood />
               </div>
             </Box>
             <Divider />
