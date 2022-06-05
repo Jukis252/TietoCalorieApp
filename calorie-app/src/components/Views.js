@@ -2,14 +2,13 @@
 import './Views.css';
 import Box from '@mui/material/Box';
 import { Divider } from '@mui/material';
-import { useState } from 'react';
 import Heading2 from './Heading2/Heading2';
-import FindFood from './FindFood/FindFood';
-import DisplayTable from './DisplayTable/DisplayTable';
+import DisplayFoodTable from './DisplayFoodTable/DisplayFoodTable';
+import DisplayDishTable from './DisplayDishesTable/DisplayDishesTable';
+import AddFood from './AddFood/AddFood';
+import UpdateFood from './UpdateFood/UpdateFood';
 
 function Views() {
-  const [name, setName] = useState('');
-
   return (
     <div className="page">
       <div className="header">Calorie App</div>
@@ -19,26 +18,30 @@ function Views() {
           <div className="MenuBody">
             <Divider />
             <Box className="BoxStyles FindFood">
-              <Heading2>Find Food</Heading2>
-              <FindFood
-                label="Food name"
-                placeholder="Enter food name"
-                name={name}
-                setName={setName}
-              />
+              <div className="addFood">
+                <Heading2>Add Food</Heading2>
+                <AddFood />
+              </div>
+              <div className="updateFood">
+                <Heading2>Update Food</Heading2>
+                <UpdateFood />
+              </div>
             </Box>
             <Divider />
           </div>
         </div>
         <div className="Display">
-          Display
+          Food Menu
           <div className="DisplayBody">
             <Divider />
-            <Box className="BoxStyles DisplayTable">
-              <DisplayTable />
+            <Box className="BoxStyles DisplayFoodTable">
+              <DisplayFoodTable />
             </Box>
-            This is display body
-
+            <Divider />
+            Dishes Menu
+            <Box className="BoxStyles DisplayDishTable">
+              <DisplayDishTable />
+            </Box>
           </div>
         </div>
       </div>
