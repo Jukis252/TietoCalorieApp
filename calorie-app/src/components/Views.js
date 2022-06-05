@@ -5,6 +5,7 @@ import { Divider } from '@mui/material';
 import { useState } from 'react';
 import Heading2 from './Heading2/Heading2';
 import FindFood from './FindFood/FindFood';
+import DisplayTable from './DisplayTable/DisplayTable';
 
 function Views() {
   const [name, setName] = useState('');
@@ -31,8 +32,15 @@ function Views() {
           </div>
         </div>
         <div className="Display">
-          This is display
-          <div className="DisplayBody">This is display body</div>
+          Display
+          <div className="DisplayBody">
+            <Divider />
+            <Box className="BoxStyles DisplayTable">
+              <DisplayTable />
+            </Box>
+            This is display body
+
+          </div>
         </div>
       </div>
     </div>
